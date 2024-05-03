@@ -1,0 +1,40 @@
+﻿@model Profkom.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 left-column">
+            <div>
+                <h1>@ViewData["Title"]</h1>
+                <p class="text">Добро пожаловать на нашу замечательную платформу! Пожалуйста, войдите в систему.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <form method="post" class="mt-4">
+                <h2 class="text-center">Введите ваши данные</h2>
+                <div class="form-group mb-3">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" class="form-control mt-1" required/>
+                    <span asp-validation-for="Email" class="text-danger mt-1"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Password">Пароль</label>
+                    <input asp-for="Password" class="form-control mt-1" type="password" required/>
+                    <span asp-validation-for="Password" class="text-danger mt-1"></span>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" asp-for="RememberMe" class="form-check-input mt-1"/>
+                    <label asp-for="RememberMe" class="form-check-label">Запомнить меня</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 mb-3">Войти</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+﻿.glass {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 100%; /* Set a fixed height for all cards */
+}
+
+.join-button {
+    font-size: 30px;
+}

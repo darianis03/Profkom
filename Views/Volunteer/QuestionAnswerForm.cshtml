@@ -1,0 +1,41 @@
+﻿@model Profkom.Models.VolunteerAnswerModel
+
+@{
+    ViewData["Title"] = "Ответить на Вопрос";
+}
+<head>
+    <link rel="stylesheet" href="~/css/answer.css"/>
+
+    <title>@ViewData["Title"]</title>
+</head>
+
+<div class="jumbotron">
+    <h1 class="display-4">Ответить на Вопрос</h1>
+    <p class="lead">Пожалуйста, напишите ваш ответ на вопрос ниже.</p>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Вопрос: @Model.QuestionTitle
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@Model.Question</p>
+                    <form method="post" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="Answer">Ответ:</label>
+                            <textarea asp-for="Answer" class="form-control" id="Answer" name="Answer" required></textarea>
+                            <div class="invalid-feedback">
+                                Пожалуйста, напишите ваш ответ.
+                            </div>
+                        </div>
+                        <input type="hidden" asp-for="QuestionId" value="@Model.QuestionId" name="QuestionId" id="QuestionId"/>
+                        <button type="submit" class="btn btn-primary">Отправить ответ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

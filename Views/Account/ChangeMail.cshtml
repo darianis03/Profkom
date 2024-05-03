@@ -1,0 +1,35 @@
+﻿@model Profkom.Models.ChangeMailViewModel
+
+@{
+    ViewData["Title"] = "Изменить Email";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>@ViewData["Title"]</h1>
+
+        <form method="post">
+
+            <div class="form-group mb-3">
+                <label asp-for="CurrentEmail">Текущий Email</label>
+                <input asp-for="CurrentEmail" class="form-control mt-1"/>
+                <span asp-validation-for="CurrentEmail" class="text-danger mt-1"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="NewEmail">Новый Email</label>
+                <input asp-for="NewEmail" class="form-control mt-1"/>
+                <span asp-validation-for="NewEmail" class="text-danger mt-1"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ConfirmNewEmail">Подтвердите новый Email</label>
+                <input asp-for="ConfirmNewEmail" class="form-control mt-1"/>
+                <span asp-validation-for="ConfirmNewEmail" class="text-danger mt-1"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Изменить Email</button>
+
+        </form>
+    </div>
+</div>

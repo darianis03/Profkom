@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>default</LangVersion>
+        <TargetFramework>net8.0</TargetFramework>
+        <Title>Profkom</Title>
+        <Authors>kmsoln</Authors>
+        <Copyright>kmsoln</Copyright>
+        <Company>kmsoln</Company>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.2" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="wwwroot\src\img\team\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="Views\Account\ChangeMail.cshtml"/>
+        <AdditionalFiles Include="Views\Account\ChangePassword.cshtml"/>
+        <AdditionalFiles Include="Views\Account\Login.cshtml"/>
+        <AdditionalFiles Include="Views\Account\Profile.cshtml"/>
+        <AdditionalFiles Include="Views\Account\Register.cshtml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Views\Event\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Event\Details.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Event\Index.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Create.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Delete.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Details.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Edit.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Index.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Manage.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Team\Requests.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Volunteer\Apply.cshtml"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\event\index.css"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\event\slideshow.css"/>
+        <_ContentIncludedByDefault Remove="Views\Request\ChangeMail.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Request\ChangePassword.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Request\Login.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Request\Profile.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Request\Register.cshtml"/>
+    </ItemGroup>
+
+</Project>

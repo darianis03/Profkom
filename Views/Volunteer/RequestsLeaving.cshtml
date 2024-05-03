@@ -1,0 +1,69 @@
+﻿@model Profkom.Models.VolunteerRequestsLeavingModel
+
+@{
+    ViewData["Title"] = "Заявки на Уход";
+}
+
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+
+<h2>Заявки на Уход</h2>
+
+<div class="row">
+    @foreach (var request in Model.Requests)
+    {
+        var statusText = Model.RequestStatuses.FirstOrDefault(r => r.Id.Contains(request.StatusId))?.Description;
+        var translatedText = "";
+        switch (statusText)
+        {
+            case "Pending":
+                translatedText = "В ожидании";
+                break;
+            case "Accepted":
+                translatedText = "Принято";
+                break;
+            case "Rejected":
+                translatedText = "Отклонено";
+                break;
+        }
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Заявка №@request.Id</h5>
+                    <p class="card-text">Волонтёр: @request.Volunteer.FirstName @request.Volunteer.LastName</p>
+                    <p class="card-text">Статус: @translatedText</p>
+                    <p class="card-text">Дата: @request.Date.ToShortDateString()</p>
+                    <p class="card-text">Причина: @request.Reason</p>
+                    @if (statusText == "Pending")
+                    {
+                        @if ((User.IsInRole("Admin") || User.IsInRole("Moderator")))
+                        {
+                            <form asp-action="AcceptLeaving" method="post">
+                                <input type="hidden" name="requestId" id="requestId" value="@request.Id" />
+                                <button type="submit" name="action" value="AcceptLeavingRequest" class="btn btn-success">Принять</button>
+                            </form>
+                            <form asp-action="RejectLeaving" method="post">
+                                <input type="hidden" name="leavingRequestId" id="leavingRequestId" value="@request.Id" />
+                                <button type="submit" name="action" value="RejectLeavingRequest" class="btn btn-danger">Отклонить</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <p class="card-text">Не отвечено</p>
+                        }
+
+                    }
+                    
+                    @if (statusText == "Accepted")
+                    {
+                        <form asp-action="RequestDetailsLeaving" method="post">
+                            <input type="hidden" name="requestId" id="requestId" value="@request.Id" />
+                            <button type="submit" name="action" value="RejectRequest" class="btn btn-info">Подробности</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

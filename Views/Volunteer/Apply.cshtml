@@ -1,0 +1,44 @@
+﻿@model Profkom.Models.VolunteerRegistrationModel
+
+@{
+    ViewData["Title"] = "Подать Заявку";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">Договор на Волонтёрство</h1>
+    <p class="lead">Пожалуйста, заполните форму ниже, чтобы подать заявку на волонтёрство.</p>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        @if (Model.RegistrationSuccessful)
+        {
+            <div class="alert alert-success" role="alert">
+                Спасибо за регистрацию в качестве волонтёра! Ваш запрос находится в ожидании.
+            </div>
+        }
+        else
+        {
+            <form method="post" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Левая Колонка: Поля Формы -->
+                        <div class="form-group">
+                            <p>Настоящим я, <input asp-for="FirstName" type="text" class="form-control-sm" id="FirstName" name="FirstName" placeholder="Имя" required/>, <input asp-for="LastName" type="text" class="form-control-sm" id="LastName" name="LastName" placeholder="Фамилия" required/>. соглашаюсь стать волонтёром в организации Профком.</p>
+                        </div>
+
+                        <div class="form-group">
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input id="acceptRules" type="checkbox" class="form-check-input mt-1" required/>
+                            <label for="acceptRules" class="form-check-label">*Я подтверждаю, что прочитал и согласен с условиями данного договора на волонтёрство и обязуюсь выполнять все обязанности волонтёра в соответствии с правилами и требованиями организации Профком.</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Подать Заявку</button>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+</div>

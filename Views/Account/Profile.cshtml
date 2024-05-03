@@ -1,0 +1,35 @@
+﻿@model Profkom.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Профиль";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-3">Имя пользователя:</dt>
+            <dd class="col-sm-9">@Model.UserName</dd>
+
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Полное имя:</dt>
+            <dd class="col-sm-9">@Model.FullName</dd>
+
+            <dt class="col-sm-3">Дата рождения:</dt>
+            <dd class="col-sm-9">@Model.DateOfBirth.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">Изображение профиля:</dt>
+            <dd class="col-sm-9">
+                <img src="@Model.ProfilePictureUrl" alt="Изображение профиля" class="img-thumbnail"/>
+            </dd>
+        </dl>
+    </div>
+
+    <div>
+        <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-primary mt-3 mb-3">Сменить пароль</a>
+        <a href="@Url.Action("ChangeMail", "Account")" class="btn btn-primary mt-3 mb-3">Изменить Email</a>
+    </div>
+</div>

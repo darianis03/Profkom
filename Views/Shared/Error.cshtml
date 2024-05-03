@@ -1,0 +1,26 @@
+﻿@model Profkom.Models.ErrorViewModel
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 text-danger">Error</h1>
+        <h2 class="text-danger">An error occurred while processing your request.</h2>
+    </div>
+
+    @if (Model.ShowRequestId)
+    {
+        <p class="lead">
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <div class="alert alert-warning mt-4">
+        <h3 class="alert-heading">Development Mode</h3>
+        <p>
+            Swapping to <strong>Development</strong> environment provides more detailed error information.
+        </p>
+        <p class="mb-0">
+            <strong>Caution:</strong> Enabling Development mode for deployed applications can expose sensitive information.
+            For local debugging, set <strong>ASPNETCORE_ENVIRONMENT</strong> to <strong>Development</strong> and restart the app.
+        </p>
+    </div>
+</div>

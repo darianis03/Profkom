@@ -1,0 +1,42 @@
+﻿@model Profkom.Models.VolunteerQuestionFormModel
+
+@{
+    ViewData["Title"] = "Задать Вопрос";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/question.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+
+<div class="container">
+    <div class="chat-container">
+        <div class="chat">
+            <!-- Fake message -->
+            <div class="message received">
+                <div class="profile-photo">
+                    <img src="https://avatars.githubusercontent.com/u/153606593?s=96&v=4" alt="Profile Photo">
+                </div>
+                <div class="message-content">
+                    <p>Hello! Мы здесь, чтобы помочь вам. Напишите ваш вопрос ниже:</p>
+                </div>
+            </div>
+        </div>
+        <div class="user-input">
+            <form method="post" asp-action="QuestionForm" class="needs-validation" novalidate>
+                <div class="form-group">
+                    
+                    <textarea asp-for="Question" class="form-control" id="QuestionTitle" name="QuestionTitle" placeholder="Напишите название вопроса..." required></textarea>
+                </div>
+                <div class="form-group">
+
+                    <textarea asp-for="Question" class="form-control" id="Question" name="Question" placeholder="Напишите ваш вопрос здесь..." required></textarea>
+                    <div class="invalid-feedback">
+                        Пожалуйста, задайте ваш вопрос.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
+    </div>
+</div>

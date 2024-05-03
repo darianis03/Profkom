@@ -1,0 +1,70 @@
+﻿@model Profkom.Models.VolunteerRequestsModel
+
+@{
+    ViewData["Title"] = "Заявки Волонтеров";
+}
+
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+
+<h2>Заявки Волонтеров</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Идентификатор Заявки</th>
+        <th>Идентификатор Волонтера</th>
+        <th>Статус</th>
+        <th>Дата</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var request in Model.Requests)
+    {
+        var statusText = @Model.RequestStatuses.FirstOrDefault(r => r.Id.Contains(request.StatusId))?.Description;
+        var translatedText = "";
+        switch (statusText)
+        {
+            case "Pending":
+                translatedText = "В ожидании";
+                break;
+            case "Accepted":
+                translatedText = "Принято";
+                break;
+            case "Rejected":
+                translatedText = "Отклонено";
+                break;
+        }
+        <tr>
+            <td>@request.Id</td>
+            <td>@request.VolunteerId</td>
+            <td>@translatedText</td>
+            <td>@request.Date.ToShortDateString()</td>
+            <td>
+                @if (statusText == "Pending")
+                {
+                    <form id="delete-@request.Id" asp-action="AcceptRequest" method="post">
+                        <input type="hidden" name="RequestId" value="@request.Id"/>
+                        <button type="submit" name="action" value="AcceptRequest" class="btn btn-success">Принять</button>
+                    </form>
+                    
+                    <form id="delete-@request.Id" asp-action="RejectRequest" method="post">
+                        <input type="hidden" name="RequestId" value="@request.Id"/>
+                        <button type="submit" name="action" value="RejectRequest" class="btn btn-danger">Отклонить</button>
+                   </form>
+                }
+                
+                @if (statusText == "Accepted")
+                {
+                    <form id="delete-@request.Id" asp-action="RequestDetails" method="post">
+                        <input type="hidden" name="RequestId" value="@request.Id"/>
+                        <button type="submit" name="action" value="RejectRequest" class="btn btn-info">Подробности</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

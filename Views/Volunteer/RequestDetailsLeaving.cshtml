@@ -1,0 +1,52 @@
+﻿@model Profkom.Models.VolunteerRequestLeavingDetailsModel
+@{
+    ViewData["Title"] = "Подробности запроса на уход";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/request-details-leaving.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+
+<div class="contract-container">
+    <h1 class="contract-title">Подробности запроса на уход</h1>
+    
+    <div class="details-section">
+        <span class="details-label">Идентификатор запроса:</span>
+        <span class="details">@Model.Id</span>
+    </div>
+    
+    <div class="details-section">
+        <span class="details-label">Информация о волонтере:</span>
+    </div>
+    
+    <div class="details-section">
+        <span class="details-label">ID волонтера:</span>
+        <span class="details">@Model.VolunteerId</span>
+    </div>
+    
+    <div class="details-section">
+        <span class="details-label">Статус запроса:</span>
+        <span class="details">@Model.Status</span>
+    </div>
+
+    <div class="details-section">
+        <span class="details-label">Дата подачи запроса:</span>
+        <span class="details">@Model.Date.ToString("yyyy-MM-dd")</span>
+    </div>
+
+    <div class="details-section">
+        <span class="details-label">Причина ухода:</span>
+        <span class="details">@Model.Reason</span>
+    </div>
+    
+    
+    <div class="details-section">
+        <span class="details-label">Подписи:</span>
+    </div>
+    
+    <div class="details-section">
+        <span class="details-label">Подпись волонтера:</span>
+        <span class="details">@Model.FirstName @Model.LastName</span>
+    </div>
+</div>

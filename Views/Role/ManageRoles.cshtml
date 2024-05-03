@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Profkom.Models.RoleViewModel>
+
+@{
+    ViewData["Title"] = "Управление ролями";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<button class="btn btn-primary" onclick="toggleCreate()">Добавить роль</button>
+<div id="create-panel" style="display: none;">
+    <form asp-action="CreateRole" method="post">
+        <label for="RoleName">Название роли:</label>
+        <input type="text" id="RoleName" name="RoleName" class="form-control"/>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+
+    <button class="btn btn-secondary" onclick="cancelCreate()">Отменить</button>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Название роли</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model != null)
+    {
+        @foreach (var role in Model)
+        {
+            @if (role != null)
+            {
+                <tr>
+                    <td>@role.RoleName</td>
+                    <td>
+                        <span id="edit-@role.Id">
+                            <button class="btn btn-warning" href="javascript:void(0);" onclick="toggleEdit('@role.Id', '@role.RoleName')">Редактировать</button> |
+                        </span>
+
+                        <form id="delete-@role.Id" asp-action="DeleteRole" method="post">
+                            <input type="hidden" name="RoleId" value="@role.Id"/>
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+
+                        <div id="edit-panel-@role.Id" style="display: none;">
+                            <form asp-action="UpdateRole" asp-controller="Role" method="post">
+                                <label for="newRoleTitle-@role.Id">Новое название роли:</label>
+                                <input type="hidden" name="RoleId" value="@role.Id"/>
+                                <input type="text" id="newRoleTitle-@role.Id" name="newRoleTitle" value="@role.RoleName" class="form-control"/>
+                                <button type="submit" class="btn btn-success">Сохранить</button>
+                            </form>
+                            <button class="btn btn-secondary" onclick="cancelEdit('@role.Id')">Отменить</button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="2">Ролей не найдено.</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<!-- JavaScript Section with Comments -->
+<script>
+    // Function to toggle the display of an HTML element
+    function toggleElementDisplay(elementId, displayStyle) {
+        document.getElementById(elementId).style.display = displayStyle;
+    }
+
+    // Function to show the edit panel and hide other elements
+    function toggleEdit(roleId, currentRoleTitle) {
+        toggleElementDisplay(`edit-${roleId}`, 'none'); // Hide Edit button
+        toggleElementDisplay(`edit-panel-${roleId}`, 'inline'); // Show Edit panel
+        toggleElementDisplay(`delete-${roleId}`, 'none'); // Hide Delete button
+        document.getElementById(`newRoleTitle-${roleId}`).value = currentRoleTitle; // Set current role name
+    }
+
+    // Function to cancel edit and show other elements
+    function cancelEdit(roleId) {
+        toggleElementDisplay(`edit-${roleId}`, 'inline'); // Show Edit button
+        toggleElementDisplay(`edit-panel-${roleId}`, 'none'); // Hide Edit panel
+        toggleElementDisplay(`delete-${roleId}`, 'inline'); // Show Delete button
+    }
+
+    // Function to show create panel
+    function toggleCreate() {
+        toggleElementDisplay('create-panel', 'inline');
+    }
+
+    // Function to cancel create and hide create panel
+    function cancelCreate() {
+        toggleElementDisplay('create-panel', 'none');
+    }
+</script>

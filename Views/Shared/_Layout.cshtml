@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Title dynamically generated -->
+    <title>@ViewData["Title"] - Профком ВлГУ</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <!-- Site-specific CSS -->
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true"/>
+    <!-- Site-Icon -->
+    <link rel="icon" href="~/src/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+<header>
+    <!-- Render the Navbar partial view -->
+    @await Html.PartialAsync("_Navbar")
+</header>
+
+<main role="main" class="container">
+    <!-- Render the main content of the page -->
+    @RenderBody()
+</main>
+
+<!-- JavaScript dependencies -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/scripts/jquery-3.6.0.min.js"></script>
+<!-- Site-specific JavaScript -->
+<script src="~/js/site.js" asp-append-version="true"></script>
+<!-- Render scripts from sections defined in the views -->
+
+@await RenderSectionAsync("Scripts", false)
+</body>
+</html>

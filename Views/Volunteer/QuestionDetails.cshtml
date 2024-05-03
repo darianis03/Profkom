@@ -1,0 +1,48 @@
+﻿@model Profkom.Models.VolunteerQuestionDetailsModel
+@{
+    ViewData["Title"] = "Задать Вопрос";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/question-details.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+
+<div class="conversation-window">
+    <div class="conversation-header">
+        <h3>@Model.QuestionTitle</h3>
+    </div>
+    <div class="chat-container">
+        <div class="chat-message @GetDirection(Model.VolunteerIdentifier)">
+            <div class="chat-avatar">
+                <img src="@GetProfilePicture(Model.VolunteerIdentifier)" alt="Avatar">
+            </div>
+            <div class="chat-message-content">
+                <p>@Model.Question</p>
+                <span class="chat-message-date">@Model.QuestionDate.ToString("yyyy-MM-dd HH:mm")</span>
+            </div>
+        </div>
+        <div class="chat-message @GetDirection(Model.AnsweredPersonIdentifier)">
+            <div class="chat-avatar">
+                <img src="@GetProfilePicture(Model.AnsweredPersonIdentifier)" alt="Avatar">
+            </div>
+            <div class="chat-message-content">
+                <p>@Model.Answer</p>
+                <span class="chat-message-date">@Model.AnswerDate.ToString("yyyy-MM-dd HH:mm")</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@functions {
+    string GetDirection(string personIdentifier)
+    {
+        return personIdentifier == Model.VolunteerIdentifier ? "right" : "left";
+    }
+
+    string GetProfilePicture(string personIdentifier)
+    {
+        return personIdentifier == Model.VolunteerIdentifier ? "https://avatars.githubusercontent.com/u/146892508?v=4" : "https://avatars.githubusercontent.com/u/153606593?s=96&v=4";
+    }
+}

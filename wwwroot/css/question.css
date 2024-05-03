@@ -1,0 +1,1 @@
+.chat-container{max-width:600px;margin:0 auto;padding:20px}.chat{display:flex;flex-direction:column}.message{display:flex;align-items:flex-start;margin-bottom:10px}.profile-photo{margin-right:10px}.profile-photo img{width:40px;height:40px;border-radius:50%}.message-content{background-color:#f1f1f1;padding:10px;border-radius:10px;max-width:70%}.user-input{margin-top:20px}

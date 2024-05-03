@@ -1,0 +1,33 @@
+﻿@* 
+    _ViewImports.cshtml
+
+    This file is a Razor view imports file in an ASP.NET Core application. 
+    It plays a crucial role in configuring shared directives and tag helpers 
+    that are applicable to multiple views within the same directory and its subdirectories.
+
+    Razor view imports files are automatically executed before the rendering 
+    of any view, making them an ideal place to define common imports, tag helpers, 
+    and other directives that should be consistently applied across multiple views.
+
+    Key components in this file:
+
+    1. Titlespace Imports:
+       - The '@using' directives declare namespaces that are available to all views 
+         in the specified scope, eliminating the need to duplicate them in every view.
+    
+    2. Tag Helper Import:
+       - The '@addTagHelper' directive specifies the tag helpers that should be 
+         applied globally. Tag helpers enhance the functionality of HTML elements 
+         and are commonly used for generating dynamic content and performing 
+         server-side logic within views.
+
+    It is essential to maintain and update this file to ensure a uniform and 
+    standardized configuration for views, promoting consistency and ease of maintenance.
+
+    Note: Avoid cluttering this file with unnecessary directives to keep it focused 
+    on the essentials needed for the views in its scope.
+
+    Reference: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-6.0
+*@
+@using Profkom
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

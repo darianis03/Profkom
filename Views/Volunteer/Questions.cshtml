@@ -1,0 +1,50 @@
+﻿@model Profkom.Models.VolunteerQuestionsModel
+
+@{
+    ViewData["Title"] = "Вопросы Волонтеров";
+}
+<head>
+    <link rel="stylesheet" href="~/css/questions.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+
+<h2>Вопросы Волонтеров</h2>
+
+<div class="card-list">
+    @foreach (var question in Model.Questions)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Вопрос от Волонтера @question.VolunteerId</h5>
+                <p class="card-text">Дата: @question.Date.ToShortDateString()</p>
+                <p class="card-text">Статус: @(question.IsAnswered ? "Отвечено" : "Не отвечено")</p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">@question.Question</p>
+            </div>
+            <div class="card-footer">
+                @if (!question.IsAnswered && (User.IsInRole("Admin") || User.IsInRole("Moderator")))
+                {
+                    <form asp-controller="Volunteer" asp-action="QuestionAnswerForm" method="GET">
+                        <input type="hidden" name="QuestionId" value="@question.Id" />
+                        <button type="submit" name="action" value="AnswerQuestion" class="btn btn-primary">Ответить</button>
+                    </form>
+                }
+                else
+                {
+                    if (!question.IsAnswered)
+                    {
+                        <p class="card-text">Не отвечено</p>
+                    }
+                    else
+                    {
+                        <form id="details-@question.Id" asp-action="QuestionDetails" method="post">
+                            <input type="hidden" asp-for="@question.Id" name="questionId" id="questionId" value="@question.Id"/>
+                            <button type="submit" name="action" value="RejectRequest" class="btn btn-info">Подробности</button>
+                        </form>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>

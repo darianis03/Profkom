@@ -1,0 +1,54 @@
+﻿@* 
+    _ViewStart.cshtml
+
+    This file is a Razor view start file in an ASP.NET Core application. 
+    It allows you to define common settings that are applied to all views 
+    in the same directory and its subdirectories.
+
+    The primary purpose of _ViewStart.cshtml is to set the default layout 
+    for views, but it can also include other common configurations for views.
+
+    Key components in this file:
+
+    1. Layout Setting:
+       - The '@{ Layout = "_Layout"; }' code sets the default layout page 
+         for all views in the specified scope. This layout will be used 
+         unless overridden by an individual view.
+         
+Example Usage:
+
+    - Setting a Different Layout:
+      To use a different layout for all views in a specific folder and its 
+      subfolders, you can change the value assigned to 'Layout':
+
+      @{
+          Layout = "_AlternateLayout";
+      }
+
+    - Applying Global Configuration:
+      You can use this file to apply global configurations, such as setting 
+      ViewBag properties or ViewBag.Title, which will be available to all views.
+
+      @{
+          ViewBag.Title = "My Global Title";
+      }
+
+    It is essential to manage this file carefully, as changes made here 
+    can impact the layout and behavior of multiple views.
+
+    Note: Avoid including complex logic in this file, as its main purpose 
+    is to establish common settings for views.
+
+    Reference: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-6.0
+*@
+
+@{
+    // Example: Setting a different layout for views in this directory and subdirectories
+    // Layout = "_AlternateLayout";
+
+    // Example: Applying global configuration
+    // ViewBag.Title = "My Global Title";
+
+    // Default layout setting
+    Layout = "_Layout";
+}
