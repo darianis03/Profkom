@@ -1,0 +1,228 @@
+﻿@model Profkom.Models.HomePageModel 
+
+@{ ViewData["Title"] = "Homepage"; }
+<head>
+    <title>@ViewData["Title"]</title> 
+</head>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <link rel="stylesheet" href="~/css/unauthorizedHome.css"/>
+    
+    <main role="main" class="pb-3">
+        <div class="container mt-5">
+
+            <div class="text-center">
+                <h1 class="display-4">Профком ВлГУ</h1>
+                <p class="lead">Присоединяйтесь к нам, чтобы оказывать позитивное влияние на наше сообщество!</p>
+            </div>
+
+            <!-- Наши инициативы -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4">Наши инициативы</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card glass">
+                            <div class="card-body">
+                                <h5 class="card-title">Бесконечная сила</h5>
+                                <p class="card-text">Мы не просто команда. Мы - это группа студентов, полностью преданных своему делу. Мы работаем без остановки.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card glass">
+                            <div class="card-body">
+                                <h5 class="card-title">Совершенство</h5>
+                                <p class="card-text">Мы верим в точность. Мы верим в идеализм. Мы верим в совершенство.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card glass">
+                            <div class="card-body">
+                                <h5 class="card-title">Простота</h5>
+                                <p class="card-text">Независимо от сложности задач, мы владеем искусством превращения их в минималистическое искусство.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="text-left">
+                                <h2 class="mb-4">Присоединяйтесь к нашей команде</h2>
+                                <p>Мы всегда ищем страстных людей, желающих присоединиться к нашей команде и делать разницу. Если вы заинтересованы в волонтерстве и участии в позитивных инициативах, мы будем рады видеть вас в нашей команде!</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-right">
+                                <h3 class="mb-4">Чего вы ждете?</h3>
+                                <a href="@Url.Action("Apply", "Volunteer")" class="btn btn-primary join-button">Присоединиться</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+}
+else if (User.IsInRole("Member"))
+{
+    <div class ="container d-flex align-items-center justify-content-center vh-100" >
+        <div class ="text-center" >
+            <h1 class ="display-1" > Добро пожаловать на нашу платформу!</h1 >
+
+            <p class ="lead" > Спасибо за создание аккаунта.Мы рады приветствовать вас на борту.</p >
+
+            <p > Теперь пришло время перейти к следующему шагу и подать заявку на присоединение к нашей команде.Мы верим в создание позитивного влияния, и нам бы хотелось, чтобы вы стали его частью.</p >
+
+            <a href = "@Url.Action("Apply", "Volunteer")" class ="btn btn-primary btn-lg" > Подать заявку сейчас</a>
+        </div>
+   </div>
+}else if (User.IsInRole("ExVolunteer"))
+{
+    <head>
+        <title>@ViewData["Title"]</title> <link rel="stylesheet" href="~/css/homepage.css">
+    </head>
+    
+    <div class="grid-container">
+        <div class="id-card">
+            <h1>Профсоюзный билет</h1>
+            <div class="profile-photo">
+                <img src="https://avatars.githubusercontent.com/u/153606593?s=96&v=4" alt="Profile Photo">
+            </div>
+            <div class="details">
+                <p>
+                    <strong>Имя:</strong> @Model.UserName
+                </p>
+                <p>
+                    <strong>Телефон:</strong> @Model.PhoneNumber
+                </p>
+                <p>
+                    <strong>Почта:</strong> @Model.Email
+                </p>
+                <p>
+                    <strong>Роль:</strong> @Model.Role
+                </p> <img src="https://hexdocs.pm/qr_code/docs/qrcode.svg" alt="QR Code">
+            </div>
+        </div>
+        <div class="user-panel">
+            <h1>Моя панель</h1>
+            <div class="panel-item">
+                <div class="panel-text">
+                    <label>Подайте заявку еще раз, чтобы вернуться в команду...</label>
+                </div> <a class="nav-link" asp-area="" asp-controller="Volunteer" asp-action="Apply">Подать заявку</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <link rel="stylesheet" href="~/css/homepage.css">
+
+    <div class="grid-container">
+        <div class="id-card">
+            <h1>Профсоюзный билет</h1>
+            <div class="profile-photo">
+                @if (User.IsInRole("Volunteer"))
+                {
+                    <img src="https://avatars.githubusercontent.com/u/146892508?v=4" alt="Profile Photo">
+                } 
+                else if (User.IsInRole("Moderator"))
+                {
+                    <img src="https://avatars.githubusercontent.com/u/153606593?s=96&v=4" alt="Profile Photo">
+                } 
+                else if (User.IsInRole("Admin"))
+                {
+                    <img src="https://avatars.githubusercontent.com/u/6886363?v=4" alt="Profile Photo">
+                }
+                
+            </div>
+            <div class="details">
+                <p>
+                    <strong>Имя:</strong> @Model.UserName
+                </p>
+                <p>
+                    <strong>Телефон:</strong> @Model.PhoneNumber
+                </p>
+                <p>
+                    <strong>Почта:</strong> @Model.Email
+                </p>
+                <p>
+                    <strong>Роль:</strong> @Model.Role
+                </p> <img src="https://hexdocs.pm/qr_code/docs/qrcode.svg" alt="QR Code">
+            </div>
+        </div>
+        
+        <div class="user-panel">
+            <h1>Моя панель</h1>
+            <div class="panel-item">
+                <div class="panel-text">
+                    <label>Вы можете найти всю необходимую информацию...</label>
+                </div> <a class="nav-link" asp-area="" asp-controller="Info" asp-action="Index">Информация</a>
+            </div>
+            
+            @if (User.IsInRole("Volunteer"))
+            {
+                <div class="panel-item">
+                    <div class="panel-text">
+                        <label>Вы можете подать заявку на уход из команды...</label>
+                    </div> <a class="nav-link" asp-area="" asp-controller="Leaving" asp-action="Leave">Подать заявку</a>
+                </div>
+                
+                <div class="panel-item">
+                    <div class="panel-text">
+                        <label>Вы можете задать вопрос и получить помощь...</label>
+                    </div> <a class="nav-link" asp-area="" asp-controller="Question" asp-action="QuestionForm">Задать вопрос</a>
+                </div>
+            } 
+            
+            <div class="panel-item">
+                <div class="panel-text">
+                    <label>Вы можете просмотреть историю вопросов...</label>
+                </div> <a class="nav-link" asp-area="" asp-controller="Question" asp-action="Questions">Вопросы</a>
+            </div>
+            
+            @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+            {
+                
+                <div class="panel-item">
+                    <div class="panel-text">
+                        <label>Добавление, удаление или редактирование ролей...</label>
+                    </div> <a class="nav-link" asp-area="" asp-controller="Role" asp-action="ManageRoles">Управление ролями</a>
+                </div>
+            }
+            
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="panel-item">
+                    <div class="panel-text">
+                        <label>Добавление, удаление или редактирование пользователей...</label>
+                    </div> <a class="nav-link" asp-area="" asp-controller="User" asp-action="ManageUsers">Управление пользователями</a>
+                </div>
+                
+                <div class="panel-item">
+                    <div class="panel-text">
+                        <label>Вы можете обрабатывать заявки Волонтеров...</label>
+                    </div> <a class="nav-link" asp-area="" asp-controller="Volunteer" asp-action="Requests">Заявки Волонтеров</a>
+                </div>
+                <div class="panel-item">
+                    <div class="panel-text">
+                        <label>Вы можете обрабатывать запросы об уходе...</label>
+                    </div> <a class="nav-link" asp-area="" asp-controller="Leaving" asp-action="RequestsLeaving">Запросы на уход</a>
+                </div>
+            }
+
+            <div>
+                <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-primary mt-3 mb-3">Сменить пароль</a>
+                <a href="@Url.Action("ChangeMail", "Account")" class="btn btn-primary mt-3 mb-3">Изменить Email</a>
+            </div>
+        </div>
+    </div>
+    
+}

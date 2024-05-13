@@ -4,7 +4,7 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/question-details.css" />
+    <link rel="stylesheet" href="~/css/question-details.css"/>
     <title>@ViewData["Title"]</title>
 </head>
 
@@ -36,6 +36,7 @@
 
 
 @functions {
+
     string GetDirection(string personIdentifier)
     {
         return personIdentifier == Model.VolunteerIdentifier ? "right" : "left";
@@ -45,4 +46,5 @@
     {
         return personIdentifier == Model.VolunteerIdentifier ? "https://avatars.githubusercontent.com/u/146892508?v=4" : "https://avatars.githubusercontent.com/u/153606593?s=96&v=4";
     }
+
 }

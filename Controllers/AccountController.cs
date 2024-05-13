@@ -20,7 +20,7 @@ public class AccountController : Controller
         _userManager = userManager;
         _signInManager = signInManager;
     }
-    
+
     public IActionResult Login()
     {
         return View();
@@ -52,7 +52,7 @@ public class AccountController : Controller
 
         return View(viewModel);
     }
-    
+
     public IActionResult Register()
     {
         return View();
@@ -83,7 +83,7 @@ public class AccountController : Controller
 
         return View(model);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize]
@@ -92,14 +92,14 @@ public class AccountController : Controller
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
-    
+
     [Authorize]
     [HttpGet]
     public IActionResult ChangeMail()
     {
         return View();
     }
-    
+
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> ChangeMail(ChangeMailViewModel model)
@@ -107,31 +107,25 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var user = await _userManager.GetUserAsync(User);
-            
+
             if (user != null)
             {
                 user.Email = model.NewEmail;
                 var result = await _userManager.UpdateAsync(user);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Profile");
-                }
-                    
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                if (result.Succeeded) return RedirectToAction("Profile");
+
+                foreach (var error in result.Errors) ModelState.AddModelError(string.Empty, error.Description);
             }
             else
             {
                 ModelState.AddModelError(string.Empty, "User not found.");
             }
         }
-        
+
         return View(model);
     }
-    
+
     [HttpGet]
     [Authorize]
     public IActionResult ChangePassword()
@@ -157,10 +151,10 @@ public class AccountController : Controller
         );
 
         if (changePasswordResult.Succeeded) return RedirectToAction("Profile", "Account");
-        
+
         return View(model);
     }
-    
+
     [Authorize]
     public IActionResult Profile()
     {

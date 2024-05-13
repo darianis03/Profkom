@@ -4,7 +4,7 @@
     ViewData["Title"] = "Вопросы Волонтеров";
 }
 <head>
-    <link rel="stylesheet" href="~/css/questions.css" />
+    <link rel="stylesheet" href="~/css/questions.css"/>
     <title>@ViewData["Title"]</title>
 </head>
 
@@ -25,8 +25,8 @@
             <div class="card-footer">
                 @if (!question.IsAnswered && (User.IsInRole("Admin") || User.IsInRole("Moderator")))
                 {
-                    <form asp-controller="Volunteer" asp-action="QuestionAnswerForm" method="GET">
-                        <input type="hidden" name="QuestionId" value="@question.Id" />
+                    <form asp-action="QuestionAnswerForm" method="GET">
+                        <input type="hidden" name="QuestionId" value="@question.Id"/>
                         <button type="submit" name="action" value="AnswerQuestion" class="btn btn-primary">Ответить</button>
                     </form>
                 }

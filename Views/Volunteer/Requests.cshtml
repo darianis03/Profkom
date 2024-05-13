@@ -23,7 +23,7 @@
     <tbody>
     @foreach (var request in Model.Requests)
     {
-        var statusText = @Model.RequestStatuses.FirstOrDefault(r => r.Id.Contains(request.StatusId))?.Description;
+        var statusText = Model.RequestStatuses.FirstOrDefault(r => r.Id.Contains(request.StatusId))?.Description;
         var translatedText = "";
         switch (statusText)
         {
@@ -37,6 +37,7 @@
                 translatedText = "Отклонено";
                 break;
         }
+
         <tr>
             <td>@request.Id</td>
             <td>@request.VolunteerId</td>
@@ -49,13 +50,13 @@
                         <input type="hidden" name="RequestId" value="@request.Id"/>
                         <button type="submit" name="action" value="AcceptRequest" class="btn btn-success">Принять</button>
                     </form>
-                    
+
                     <form id="delete-@request.Id" asp-action="RejectRequest" method="post">
                         <input type="hidden" name="RequestId" value="@request.Id"/>
                         <button type="submit" name="action" value="RejectRequest" class="btn btn-danger">Отклонить</button>
-                   </form>
+                    </form>
                 }
-                
+
                 @if (statusText == "Accepted")
                 {
                     <form id="delete-@request.Id" asp-action="RequestDetails" method="post">

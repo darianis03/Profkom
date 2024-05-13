@@ -27,14 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="Views\Account\ChangeMail.cshtml"/>
-        <AdditionalFiles Include="Views\Account\ChangePassword.cshtml"/>
-        <AdditionalFiles Include="Views\Account\Login.cshtml"/>
-        <AdditionalFiles Include="Views\Account\Profile.cshtml"/>
-        <AdditionalFiles Include="Views\Account\Register.cshtml"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <_ContentIncludedByDefault Remove="Views\Event\Create.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Event\Details.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Event\Index.cshtml"/>
@@ -53,6 +45,56 @@
         <_ContentIncludedByDefault Remove="Views\Request\Login.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Request\Profile.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Request\Register.cshtml"/>
+        <_ContentIncludedByDefault Remove="Views\Account\ChangeMail.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Account\ChangePassword.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Account\Login.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Account\Profile.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\AdminHome.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\ExVolunteerHome.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\ModeratorHome.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\NewUser.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\UnauthorizedHome.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\VolunteerHome.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Info\GuestInfo.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Info\MemberInfo.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Info\TeamInfo.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Info\VolunteerInfo.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Role\ManageRoles.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\_Navbar.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\User\ManageUsers.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\User\ModifyUser.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\Leave.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\QuestionAnswerForm.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\QuestionDetails.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\QuestionForm.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\Questions.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\RequestDetails.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\RequestDetailsLeaving.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\Requests.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Volunteer\RequestsLeaving.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Info\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Leaving\Leave.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Leaving\RequestDetailsLeaving.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Leaving\RequestsLeaving.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Question\QuestionAnswerForm.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Question\QuestionDetails.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Question\QuestionForm.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Question\Questions.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Views\Account\ChangeMail.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\ChangePassword.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Login.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Profile.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Register.cshtml" />
     </ItemGroup>
 
 </Project>

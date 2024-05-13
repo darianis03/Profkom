@@ -27,6 +27,7 @@
                 translatedText = "Отклонено";
                 break;
         }
+
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body">
@@ -37,14 +38,14 @@
                     <p class="card-text">Причина: @request.Reason</p>
                     @if (statusText == "Pending")
                     {
-                        @if ((User.IsInRole("Admin") || User.IsInRole("Moderator")))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                         {
                             <form asp-action="AcceptLeaving" method="post">
-                                <input type="hidden" name="requestId" id="requestId" value="@request.Id" />
+                                <input type="hidden" name="requestId" id="requestId" value="@request.Id"/>
                                 <button type="submit" name="action" value="AcceptLeavingRequest" class="btn btn-success">Принять</button>
                             </form>
                             <form asp-action="RejectLeaving" method="post">
-                                <input type="hidden" name="leavingRequestId" id="leavingRequestId" value="@request.Id" />
+                                <input type="hidden" name="leavingRequestId" id="leavingRequestId" value="@request.Id"/>
                                 <button type="submit" name="action" value="RejectLeavingRequest" class="btn btn-danger">Отклонить</button>
                             </form>
                         }
@@ -52,13 +53,12 @@
                         {
                             <p class="card-text">Не отвечено</p>
                         }
-
                     }
-                    
+
                     @if (statusText == "Accepted")
                     {
                         <form asp-action="RequestDetailsLeaving" method="post">
-                            <input type="hidden" name="requestId" id="requestId" value="@request.Id" />
+                            <input type="hidden" name="requestId" id="requestId" value="@request.Id"/>
                             <button type="submit" name="action" value="RejectRequest" class="btn btn-info">Подробности</button>
                         </form>
                     }
